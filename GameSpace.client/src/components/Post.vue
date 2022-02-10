@@ -1,26 +1,23 @@
 <template>
-  <div class="row d-flex justify-content-center">
+  <div class="row d-flex justify-content-center mt-3">
     <div class="col-md-2 bg-grey text-dark">
-      <img src="//thiscatdoesnotexist.com/" class="my-2 profilePic" alt="" />
-      <h4 class="text-center">User name</h4>
+      <img :src="post.creator.picture" class="my-2 profilePic" alt="" />
+      <h6>{{ post.creator.name }}</h6>
     </div>
     <div class="col-md-8 bg-grey text-dark">
       <div class="d-flex justify-content-between my-1">
         <div>
-          <p>Post Title - Type</p>
+          <h4>{{ post.title }}</h4>
         </div>
         <div>
-          <i class="mdi mdi-pencil"></i>
-          <i class="mdi mdi-delete"></i>
+          <!-- <i class="mdi mdi-pencil"></i> -->
+          <!-- <i class="mdi mdi-delete"></i> -->
         </div>
       </div>
-      <img src="//thiscatdoesnotexist.com/" class="contentImg" alt="" />
       <p class="mt-1">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores beatae
-        inventore cumque, animi ipsam pariatur ut eos nobis asperiores, quae,
-        quam dolor libero obcaecati quidem impedit labore maxime doloribus
-        commodi!
+        {{ post.description }}
       </p>
+      <img :src="post.contentUrl" class="contentImg mb-3" alt="" />
     </div>
   </div>
 </template>
@@ -28,6 +25,12 @@
 
 <script>
 export default {
+  props: {
+    post: {
+      type: Object,
+      required: true,
+    }
+  },
   setup() {
     return {}
   }

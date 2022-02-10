@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <Post />
+    <Post v-for="p in posts" :key="p.id" :post="p" />
   </div>
   <!-- <div
     class="

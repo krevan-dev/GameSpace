@@ -5,9 +5,9 @@
   <main>
     <router-view />
   </main>
-  <footer>
-    <div class="bg-dark text-light text-center p-4">Made with 🎮 by Krevan</div>
-  </footer>
+  <Modal id="newPost">
+    <template #modal-body></template>
+  </Modal>
 </template>
 
 <script>
