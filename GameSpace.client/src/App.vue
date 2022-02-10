@@ -6,7 +6,8 @@
     <router-view />
   </main>
   <Modal id="newPost">
-    <template #modal-body></template>
+    <template #modal-title>Create a new post...</template>
+    <template #modal-body><NewPost /></template>
   </Modal>
 </template>
 

@@ -3,7 +3,7 @@ import { dbContext } from '../db/DbContext'
 
 class PostsService {
   async getAllPosts(query = {}) {
-    const posts = await dbContext.Posts.find(query).populate('creator', 'name picture')
+    const posts = await dbContext.Posts.find(query).sort('-createdAt').populate('creator', 'name picture')
     return posts
   }
 
@@ -17,6 +17,7 @@ class PostsService {
 
   async createPost(postBody) {
     const createdPost = await dbContext.Posts.create(postBody)
+    await createdPost.populate('creator', 'name picture')
     return createdPost
   }
 

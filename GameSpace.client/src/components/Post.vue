@@ -11,19 +11,34 @@
         </div>
         <div>
           <!-- <i class="mdi mdi-pencil"></i> -->
-          <!-- <i class="mdi mdi-delete"></i> -->
+          <i class="mdi mdi-delete selectable" @click="deletePost()"></i>
         </div>
       </div>
       <p class="mt-1">
         {{ post.description }}
       </p>
-      <img :src="post.contentUrl" class="contentImg mb-3" alt="" />
+      <img
+        :src="post.contentUrl"
+        v-if="post.filetype == 'image'"
+        class="content mb-3"
+        alt=""
+      />
+      <video
+        :src="post.contentUrl"
+        v-else
+        class="content mb-3"
+        controls
+        preload="metadata"
+      ></video>
     </div>
   </div>
 </template>
 
 
 <script>
+import { postsService } from '../services/PostsService'
+import { logger } from '../utils/Logger'
+import Pop from '../utils/Pop'
 export default {
   props: {
     post: {
@@ -31,8 +46,19 @@ export default {
       required: true,
     }
   },
-  setup() {
-    return {}
+  setup(props) {
+    return {
+      async deletePost() {
+        try {
+          if (await Pop.confirm()) {
+            await postsService.deletePost(props.post.id)
+          }
+        } catch (error) {
+          Pop.toast(error.message, "error")
+          logger.log(error)
+        }
+      }
+    }
   }
 }
 </script>
@@ -43,7 +69,7 @@ export default {
   height: 150px;
   width: 150px;
 }
-.contentImg {
+.content {
   max-height: 40vh;
 }
 </style>
