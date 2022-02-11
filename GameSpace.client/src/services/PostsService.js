@@ -16,6 +16,8 @@ class PostsService {
     AppState.posts.unshift(res.data)
   }
 
+  // TODO async editPost() {}
+
   async deletePost(postId) {
     await api.delete('api/posts/' + postId)
     AppState.posts = AppState.posts.filter(p => p.id !== postId)

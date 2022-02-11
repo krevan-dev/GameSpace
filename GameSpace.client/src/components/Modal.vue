@@ -1,7 +1,7 @@
 <template>
   <div class="modal" tabindex="-1">
     <div class="modal-dialog modal-lg">
-      <div class="modal-content">
+      <div class="modal-content" :class="dark ? 'bg-dark' : ''">
         <div class="modal-header">
           <h5 class="modal-title">
             <slot name="modal-title"></slot>
@@ -20,3 +20,21 @@
     </div>
   </div>
 </template>
+
+<script>
+
+export default {
+  props: {
+    dark: { type: Boolean, default: false }
+  }
+}
+</script>
+
+
+<style scoped lang="scss">
+.bg-dark {
+  .btn-close {
+    filter: invert(1);
+  }
+}
+</style>

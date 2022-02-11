@@ -5,7 +5,7 @@
   <main>
     <router-view />
   </main>
-  <Modal id="newPost">
+  <Modal id="newPost" dark>
     <template #modal-title>Create a new post...</template>
     <template #modal-body><NewPost /></template>
   </Modal>

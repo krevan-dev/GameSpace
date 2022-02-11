@@ -1,37 +1,47 @@
 <template>
-  <div class="row d-flex justify-content-center mt-3">
-    <div class="col-md-2 bg-grey text-dark">
-      <img :src="post.creator.picture" class="my-2 profilePic" alt="" />
-      <h6>{{ post.creator.name }}</h6>
+  <div
+    class="
+      card
+      content
+      rounded
+      shadow
+      border
+      bg-dark
+      text-white
+      selectable
+      mb-2
+    "
+    data-bs-toggle="modal"
+    :data-bs-target="'#viewPost-' + post.id"
+  >
+    <img
+      :src="post.contentUrl"
+      v-if="post.filetype == 'image'"
+      class="card-img"
+      alt="..."
+    />
+    <video :src="post.contentUrl" v-else />
+    <div class="card-img-overlay on-hover">
+      <h5 class="card-title">{{ post.title }}</h5>
+      <p class="card-text">{{ new Date(post.createdAt).toLocaleString() }}</p>
     </div>
-    <div class="col-md-8 bg-grey text-dark">
-      <div class="d-flex justify-content-between my-1">
-        <div>
-          <h4>{{ post.title }}</h4>
-        </div>
-        <div>
-          <!-- <i class="mdi mdi-pencil"></i> -->
-          <i class="mdi mdi-delete selectable" @click="deletePost()"></i>
-        </div>
-      </div>
-      <p class="mt-1">
-        {{ post.description }}
-      </p>
+  </div>
+
+  <Modal :id="'viewPost-' + post.id" dark>
+    <template #modal-title
+      >{{ post.title }} by {{ post.creator.name }}</template
+    >
+    <template #modal-body>
+      <h3>{{ post.description }}</h3>
       <img
         :src="post.contentUrl"
         v-if="post.filetype == 'image'"
-        class="content mb-3"
-        alt=""
+        class="card-img"
+        alt="..."
       />
-      <video
-        :src="post.contentUrl"
-        v-else
-        class="content mb-3"
-        controls
-        preload="metadata"
-      ></video>
-    </div>
-  </div>
+      <video :src="post.contentUrl" class="scaledown" v-else controls />
+    </template>
+  </Modal>
 </template>
 
 
@@ -70,6 +80,11 @@ export default {
   width: 150px;
 }
 .content {
-  max-height: 40vh;
+  width: 30%;
+  height: auto;
+}
+.scaledown {
+  height: 50%;
+  width: auto;
 }
 </style>
