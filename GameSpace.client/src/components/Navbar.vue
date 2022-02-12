@@ -1,6 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
+      <i class="mdi mdi-gamepad fw-bold me-2" />
       <div class="d-flex flex-column align-items-center">GameSpace</div>
     </router-link>
     <button
@@ -48,13 +49,13 @@
             aria-expanded="false"
             id="authDropdown"
           >
+            <span class="text-success lighten-30">{{ user.name }}</span>
             <img
               :src="user.picture"
               alt="user photo"
               height="40"
-              class="rounded"
+              class="rounded mx-3"
             />
-            <span class="mx-3 text-success lighten-30">{{ user.name }}</span>
           </div>
           <div
             class="dropdown-menu p-0 list-group w-100"

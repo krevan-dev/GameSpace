@@ -1,24 +1,23 @@
 <template>
   <div class="container-fluid">
-    <Post v-for="p in posts" :key="p.id" :post="p" />
-  </div>
-  <!-- <div
-    class="
-      home
-      flex-grow-1
-      d-flex
-      flex-column
-      align-items-center
-      justify-content-center
-    "
-  >
-    <div class="home-card p-5 bg-white rounded elevation-3">
-      <h1 class="my-3 bg-dark text-white p-3 rounded text-center">
-        Welcome to GameSpace!
-      </h1>
-      <h4>Please log in to continue.</h4>
+    <div class="row">
+      <div class="col-md-12 mt-2">
+        <div class="card w-100 h-auto bg-dark">
+          <div
+            class="card-body coverImg d-flex flex-column justify-content-end"
+          >
+            <h5 class="card-title fs-2">Welcome to GameSpace!</h5>
+            <p class="card-text">
+              Your place for the coolest gaming clips and screenshots!
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-  </div> -->
+    <div class="row">
+      <Post v-for="p in posts" :key="p.id" :post="p" />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -64,5 +63,11 @@ export default {
       object-position: center;
     }
   }
+}
+.coverImg {
+  background-image: url("src/assets/img/cardbg.jpg");
+  height: 25vh;
+  background-size: cover;
+  background-position: center;
 }
 </style>

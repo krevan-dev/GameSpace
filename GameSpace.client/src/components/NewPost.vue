@@ -7,54 +7,23 @@
         placeholder="Please enter a title..."
         type="text"
         v-model="editable.title"
+        required
       />
     </div>
     <div class="form-group mb-2">
       <label for="postDescription">Post Description:</label>
-      <textarea
+      <input
         class="form-control"
-        placeholder="Please enter a description of your content."
-        name="postDescription"
-        id=""
-        cols="30"
-        rows="3"
+        placeholder="Please enter a description..."
+        type="text"
         v-model="editable.description"
-      ></textarea>
+      />
     </div>
-    <!-- <div class="form-group mb-2">
-      <label for="fileType" class="me-2">Please select a file type:</label>
-      <div class="form-check form-check-inline">
-        <input
-          class="form-check-input"
-          type="radio"
-          name="flexRadioDefault"
-          id="flexRadioDefault1"
-          v-model="editable.filetype"
-          value="image"
-        />
-        <label class="form-check-label" for="flexRadioDefault1">
-          Image/Screenshot
-        </label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input
-          class="form-check-input"
-          type="radio"
-          name="flexRadioDefault"
-          id="flexRadioDefault2"
-          v-model="editable.filetype"
-          value="video"
-        />
-        <label class="form-check-label" for="flexRadioDefault2">
-          Video Clip
-        </label>
-      </div>
-    </div> -->
     <div class="form-group mb-2">
       <label for="contentUrl">Upload Content:</label>
       <input
         class="form-control"
-        placeholder="Please enter a url for your content."
+        placeholder="Please select your content to upload."
         type="file"
         id="mediaInput"
         @change="handleFileChange()"
@@ -71,7 +40,20 @@
     </div>
     <hr />
     <div class="d-flex justify-content-between mb-2">
-      <button type="submit" class="btn btn-success">Submit</button>
+      <button
+        v-if="loading == true"
+        class="btn btn-warning"
+        type="button"
+        disabled
+      >
+        <span
+          class="spinner-border spinner-border-sm me-2"
+          role="status"
+          aria-hidden="true"
+        ></span>
+        <span>Posting...</span>
+      </button>
+      <button v-else type="submit" class="btn btn-success">Submit</button>
       <button
         type="button"
         class="btn btn-outline-danger"
@@ -96,12 +78,15 @@ export default {
     const editable = ref({})
     const filetype = ref('image')
     const previewUrl = ref('')
+    const loading = ref(false)
     return {
       editable,
       filetype,
+      loading,
       previewUrl,
       async createPost() {
         try {
+          loading.value = true
           const form = event.target
           const mediaInput = form.mediaInput
           const file = mediaInput.files[0]
@@ -112,7 +97,7 @@ export default {
           Modal.getOrCreateInstance(document.getElementById('newPost')).hide()
           editable.value = {}
           editable.value.contentUrl = ''
-          Pop.toast("Post successfully created!")
+          loading.value = false
         } catch (error) {
           Pop.toast(error.message, "error")
           logger.log(error)

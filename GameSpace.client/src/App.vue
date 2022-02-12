@@ -25,4 +25,12 @@ export default {
 </script>
 <style lang="scss">
 @import "./assets/scss/main.scss";
+
+.modal-backdrop.show {
+  // background-color: #111927;
+  background-image: url("src/assets/img/modalbg.jpg");
+  opacity: 1;
+  background-size: cover;
+  background-position: center;
+}
 </style>

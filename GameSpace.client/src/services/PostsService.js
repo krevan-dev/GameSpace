@@ -14,9 +14,13 @@ class PostsService {
     const res = await api.post('api/posts', postBody)
     // logger.log(res.data)
     AppState.posts.unshift(res.data)
+    Pop.toast("Post was successfully created!", 'success')
   }
 
-  // TODO async editPost() {}
+  async editPost(updatedPost) {
+    const res = await api.put('api/posts/' + updatedPost.id, updatedPost)
+    logger.log(res.data)
+  }
 
   async deletePost(postId) {
     await api.delete('api/posts/' + postId)
