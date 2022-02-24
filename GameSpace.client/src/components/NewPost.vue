@@ -46,12 +46,12 @@
         type="button"
         disabled
       >
+        <span>Posting...</span>
         <span
-          class="spinner-border spinner-border-sm me-2"
+          class="spinner-border spinner-border-sm ms-2"
           role="status"
           aria-hidden="true"
         ></span>
-        <span>Posting...</span>
       </button>
       <button v-else type="submit" class="btn btn-success">Submit</button>
       <button

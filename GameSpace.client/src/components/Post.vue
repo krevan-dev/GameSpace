@@ -21,11 +21,7 @@
           />
           <i v-else class="mdi mdi-video-vintage text-secondary" />
         </div>
-        <div class="d-flex align-items-baseline">
-          <p class="card-text">
-            {{ new Date(post.createdAt).toLocaleString() }}
-          </p>
-        </div>
+        <div class="d-flex align-items-baseline"></div>
       </div>
     </div>
   </div>
@@ -34,17 +30,7 @@
   <Modal :id="'viewPost-' + post.id" dark>
     <template #modal-title>
       <div v-if="post.creatorId == account.id">
-        <i
-          class="mdi mdi-delete text-warning selectable me-2"
-          title="Delete Post"
-          @click="deletePost()"
-        />
-        <i
-          class="mdi mdi-pencil text-warning selectable me-2"
-          title="Edit Post"
-          data-bs-toggle="modal"
-          data-bs-target="#newPost"
-        />
+        <button class="btn btn-danger mdi mdi-delete" @click="deletePost()" />
       </div>
     </template>
     <template #modal-body>
@@ -68,12 +54,17 @@
           <p>{{ post.description }}</p>
         </div>
         <div>
-          {{ post.creator.name }}
-          <img
-            :src="post.creator.picture"
-            class="profilePic ms-3 rounded-circle"
-            alt="profile picture"
-          />
+          <p>
+            {{ post.creator.name }}
+            <img
+              :src="post.creator.picture"
+              class="profilePic ms-3 rounded-circle"
+              alt="profile picture"
+            />
+          </p>
+          <!-- <p class="card-text">
+            {{ new Date(post.createdAt).toLocaleString() }}
+          </p> -->
         </div>
       </div>
     </template>
@@ -140,5 +131,8 @@ export default {
 .videoElem {
   max-height: 75vh;
   background-color: black;
+}
+.h5 {
+  text-shadow: 0px 0px 5px #000000;
 }
 </style>

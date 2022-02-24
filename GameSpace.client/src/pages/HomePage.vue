@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12 mt-2">
-        <div class="card w-100 h-auto bg-dark">
+        <!-- <div class="card w-100 h-auto bg-dark">
           <div
             class="card-body coverImg d-flex flex-column justify-content-end"
           >
@@ -11,7 +11,7 @@
               Your place for the coolest gaming clips and screenshots!
             </p>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="row">

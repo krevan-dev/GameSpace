@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <i class="mdi mdi-gamepad fw-bold me-2" />
+      <i class="mdi mdi-gamepad fw-bold fst-italic me-2" />
       <div class="d-flex flex-column align-items-center">GameSpace</div>
     </router-link>
     <button
