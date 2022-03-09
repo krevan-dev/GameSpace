@@ -30,7 +30,7 @@
         accept="image/*, video/*"
       />
     </div>
-    <div class="preview mt-3 mx-5" v-if="previewUrl">
+    <div class="preview d-flex justify-content-center my-2" v-if="previewUrl">
       <img :src="previewUrl" v-if="editable.filetype == 'image'" alt="" />
       <video
         :src="previewUrl"
@@ -40,6 +40,13 @@
     </div>
     <hr />
     <div class="d-flex justify-content-between mb-2">
+      <button
+        type="button"
+        class="btn btn-outline-danger"
+        data-bs-dismiss="modal"
+      >
+        Cancel
+      </button>
       <button
         v-if="loading == true"
         class="btn btn-warning"
@@ -54,13 +61,6 @@
         ></span>
       </button>
       <button v-else type="submit" class="btn btn-success">Submit</button>
-      <button
-        type="button"
-        class="btn btn-outline-danger"
-        data-bs-dismiss="modal"
-      >
-        Cancel
-      </button>
     </div>
   </form>
 </template>
@@ -124,7 +124,7 @@ export default {
 .preview {
   img,
   video {
-    max-height: 50%;
+    max-height: 50vh;
     max-width: 50%;
     object-fit: contain;
   }
