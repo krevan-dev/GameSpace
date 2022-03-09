@@ -65,7 +65,7 @@ export default {
   }
 }
 .coverImg {
-  background-image: url("src/assets/img/cardbg.jpg");
+  background-image: url("assets/img/cardbg.jpg");
   height: 25vh;
   background-size: cover;
   background-position: center;
