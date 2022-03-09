@@ -28,7 +28,7 @@ export default {
 
 .modal-backdrop.show {
   // background-color: #111927;
-  background-image: url("src/assets/img/modalbg.jpg");
+  background-image: url("assets/img/modalbg.jpg");
   opacity: 1;
   background-size: cover;
   background-position: center;
